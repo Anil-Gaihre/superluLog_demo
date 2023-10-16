@@ -1,0 +1,114 @@
+MPI_Query_thread with MPI_THREAD_MULTIPLE
+__STDC_VERSION__ 199901
+Library version:        6.4.0
+Input matrix file:      /gpfs/alpine/csc289/proj-shared/symbolic/datasets/bbmat/bbmat.mtx
+Process grid:           1 X 1
+m 38744, n 38744, nonz 1771722
+triplet file: row/col indices are one-based.
+Time to read and distribute matrix 3.85
+**************************************************
+.. blocking parameters from sp_ienv():
+**    relaxation                 :        1
+**    max supernode              :      128
+**    estimated fill ratio       :        5
+**    min GEMM dimension for GPU :    10000
+**************************************************
+**************************************************
+.. options:
+**    Fact             :    0
+**    Equil            :    1
+**    DiagInv          :    0
+**    ParSymbFact      :    
+**    ColPerm          :    7
+**    RowPerm          :    0
+**    ReplaceTinyPivot :    1
+**    IterRefine       :    2
+**    Trans            :    0
+**    num_lookaheads   :   10
+**    SymPattern       :    0
+**    lookahead_etree  :    0
+**************************************************
+.. equilibrated? *equed = B
+.. anorm 1.215013e+01
+.. symbfact(): relax        1, maxsuper      128, fill        5
+Calling sequential symbolic factorization!
+        Nonzeros in L       16089913
+        Nonzeros in U       16048392
+        nonzeros in L+U     32099561
+        nonzeros in LSUB     5332544
+        No of supers    16207
+        Size of G(L)  3202592
+        Size of G(U)  3168590
+        int 4, short 2, float 4, double 8
+        SYMBfact (MB):  L\U 34.78       total 36.17     expansions        0
+.. # L blocks   601387  # U blocks   607841
+MPI tag upper bound = 2147483647
+.. Starting with 1 OpenMP threads 
+ === using DAG ===
+.. thresh = s_eps 5.960464e-08 * anorm 1.215013e+01 = 7.242044e-07
+.. Buffer size: Lsub 1378       Lval 172544     Usub 1927       Uval 156160     LDA 1348
+max_ncols     1220,  max_ldu      128, bigu_size   156160
+        .. GEMM buffer size: max_row_size X max_ncols = 1348 x     1220
+[0].. BIG U size   156160 (on CPU)
+[0].. BIG V size 1644560 (on CPU), dC buffer_size 5000000 (on GPU)
+CUDA version:   v 11000
+CUDA Devices: 
+0 : Tesla V100-SXM2-16GB 7 0
+  Global memory:   16128 mb 
+  Shared memory:   48 kb 
+  Constant memory: 64 kb 
+  Block registers: 65536 
+
+1 : Tesla V100-SXM2-16GB 7 0
+  Global memory:   16128 mb 
+  Shared memory:   48 kb 
+  Constant memory: 64 kb 
+  Block registers: 65536 
+
+2 : Tesla V100-SXM2-16GB 7 0
+  Global memory:   16128 mb 
+  Shared memory:   48 kb 
+  Constant memory: 64 kb 
+  Block registers: 65536 
+
+3 : Tesla V100-SXM2-16GB 7 0
+  Global memory:   16128 mb 
+  Shared memory:   48 kb 
+  Constant memory: 64 kb 
+  Block registers: 65536 
+
+ Starting with 8 Cuda Streams 
+  Max row size is 1348 
+  Threads per process 1 
+.. dQuerySpace: peak_buffer 47.54 (MB)
+
+** Memory Usage **********************************
+** NUMfact space (MB): (sum-of-all-processes)
+    L\U :          314.49 |  Total :   362.03
+** Total highmark (MB):
+    Sum-of-all :   420.70 | Avg :   420.70  | Max :   420.70
+**************************************************
+num_thread:     1
+( 0) .. Step        0: berr[j] = 6.840302e-08
+num_thread:     1
+( 0) .. Step        1: berr[j] = 4.714739e-15
+num_thread:     1
+( 0) .. Step        2: berr[j] = 4.006322e-16
+num_thread:     1
+( 0) .. Step        3: berr[j] = 3.556929e-16
+.. DiagScale = 3
+        Sol  0: ||X-Xtrue||/||X|| = 2.438783e-09
+**************************************************
+**************************************************
+**** Time (seconds) ****
+        EQUIL time             0.01
+        COLPERM time           0.12
+        SYMBFACT time          0.17
+        DISTRIBUTE time        0.38
+        FACTOR time           18.03
+        Factor flops    2.146308e+10    Mflops   1190.10
+        SOLVE time            0.155
+        Solve flops     5.980223e+07    Mflops    386.15
+        REFINEMENT time       0.498     Steps       3
+
+**************************************************
